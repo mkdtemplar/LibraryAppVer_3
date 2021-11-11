@@ -1,0 +1,29 @@
+﻿table {
+    background-color: lightblue;
+    border-collapse: collapse;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+}
+
+th, td {
+    padding: 5px;
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: lightcoral;
+    text-align: center;
+    vertical-align: center;
+}
+
+tr:first-child {
+    background-color: lightgreen;
+    text-align: center;
+    vertical-align: center;
+}
+
+.m-input {
+}

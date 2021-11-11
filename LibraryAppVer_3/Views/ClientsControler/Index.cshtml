@@ -1,0 +1,63 @@
+@model IEnumerable<DataContext.Client>
+
+@{
+    ViewData["Title"] = "index";
+}
+<link rel="stylesheet" href="css/table.css"/>
+<h1>index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOfClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LibraryId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RentedBook)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Photo)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOfClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LibraryId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentedBook)
+            </td>
+            <td>
+                @{
+                    var base64 = Convert.ToBase64String(item.Photo);
+                    var imgSrc = $"data:image/*;base64,{base64}";
+                }
+                <img src="@imgSrc" class="rounded-circle" asp-append-version="true"  height="100" width="100" alt="Profile picture"/>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

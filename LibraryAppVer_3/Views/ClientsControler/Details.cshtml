@@ -1,0 +1,52 @@
+@model DataContext.Client
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Client</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NameOfClient)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NameOfClient)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LibraryId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LibraryId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RentedBook)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RentedBook)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Photo)
+        </dt>
+        <dd class="col-sm-10">
+            @{
+                var base64 = Convert.ToBase64String(Model.Photo);
+                var imgSrc = $"data:image/*;base64,{base64}";
+            }
+            <img src="@imgSrc" class="rounded-circle" asp-append-version="true" alt="Profile picture" height="60" width="60"/>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
